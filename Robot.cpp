@@ -37,6 +37,21 @@ Object Robot::object() const{
 State Robot::state() const {
     return _state;
 }
+Plot Robot::plot() const{
+    return _plotEnFace;
+}
+
+string Robot::direction() const{
+    return _direction;
+}
+
+Object Robot::object() const{
+    return _object;
+}
+
+State Robot::state() const {
+    return _state;
+}
 void Robot::avancer(int x, int y){
     if(_afficher){
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;

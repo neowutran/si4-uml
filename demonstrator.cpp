@@ -18,11 +18,16 @@ int main(){
     r.avancer(10, 5);
     r.tourner("N");
     r.rencontrerPlot(&p1);
+    r.figer();
+    r.repartir();
     r.evaluerPlot();
     r.saisir(p1.getObject());
     r.peser();
+    r.figer();
+    r.repartir();
     r.tourner("S");
     r.avancer(5,10);
+    r.tourner("E");
     r.peser();
     r.rencontrerPlot(&p2);
     r.poser();

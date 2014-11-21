@@ -15,10 +15,4 @@ State Charge_state::rencontrerPlot(Plot p){
 State Charge_state::tourner(string direction){
     return *this;
 }
-/*
-std::ostream& operator<<(std::ostream &strm, const Charge_state &state) {
 
-    strm << "State: Charge_state" << endl;
-    return strm;
-
-}*/

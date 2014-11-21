@@ -6,5 +6,6 @@ class Fige_state: public State{
     public: 
         virtual State repartir();
 
+        friend std::ostream& operator<<(std::ostream&, const Fige_state&);
 };
 #endif

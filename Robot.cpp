@@ -20,6 +20,7 @@ void Robot::tourner(string direction){
     if(_afficher){
         cout << "Methode: tourner(" << direction << " )" << endl;
     }
+    _direction = direction;
     _state = _state.tourner(direction);
 }
 void Robot::saisir(Object o){

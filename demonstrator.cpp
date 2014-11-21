@@ -9,11 +9,13 @@ using namespace std;
 int main(){
 
     Robot r = Robot();
+    r.afficher();
 
     Object* o1 = new Object(10);
     Plot p1 = Plot(15, o1);
 
     Plot p2 = Plot(10);
+
 
     r.avancer(10, 5);
     r.tourner("N");
@@ -32,9 +34,9 @@ int main(){
     r.rencontrerPlot(&p2);
     r.poser();
 
-    int a = 1;
+    /*int a = 1;
     int* b = &a;
 
-    printf("%d @ %x", a, b);
+    printf("%d @ %x", a, b);*/
 
 }

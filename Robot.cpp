@@ -72,6 +72,7 @@ int Robot::peser(){
 }
 void Robot::rencontrerPlot(Plot* p){
     _state = _state.rencontrerPlot(*p);
+    _plotEnFace = p;
 }
 int Robot::evaluerPlot(){
     _state = _state.evaluerPlot();

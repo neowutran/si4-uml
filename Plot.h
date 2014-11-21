@@ -1,16 +1,18 @@
 #ifndef _PLOT_H
 #define _PLOT_H
-class Plot{
+
+#include "Object.h"
+
+class Plot {
+
+    private:
+        int _hauteur;
+        Object* _object;
 
     public:
-        Plot(Object object);
-
         int getHauteur() const;
         Plot(int hauteur);
+        Plot(int hauteur, Object* object);
         Object getObject();
-
-   private:
-        int _hauteur;
-        Object _object;
 };
 #endif

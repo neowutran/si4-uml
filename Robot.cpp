@@ -16,6 +16,27 @@ std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
 
 }
 
+Robot::Robot() {
+    _plotEnFace = nullptr;
+    _object = nullptr;
+    _position = new Position(0, 0);
+}
+
+Plot Robot::plot() const{
+    return _plotEnFace;
+}
+
+string Robot::direction() const{
+    return _direction;
+}
+
+Object Robot::object() const{
+    return _object;
+}
+
+State Robot::state() const {
+    return _state;
+}
 Plot Robot::plot() const{
     return _plotEnFace;
 }

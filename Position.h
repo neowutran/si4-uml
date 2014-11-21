@@ -1,14 +1,15 @@
 
 #ifndef _POSITION_H
 #define _POSITION_H
-class Position{
+
+class Position {
 
     private: 
         int _x;
         int _y;
-        Position(int x, int y);
 
     public:
+        Position(int x, int y);
         void setx(int x);
         void sety(int y);
         int getx() const;

@@ -10,12 +10,21 @@ int main(){
 
     Robot r = Robot();
 
-    Plot p1 = Plot();
-    Object o1 = Object();
+    Object* o1 = new Object(10);
+    Plot p1 = Plot(15, o1);
+
+    Plot p2 = Plot(10);
 
     r.avancer(10, 5);
     r.tourner("N");
     r.rencontrerPlot(p1);
-    r.evaluerPlot(p1);
+    r.evaluerPlot();
     r.saisir(p1.getObject());
+    r.peser();
+    r.tourner("S");
+    r.avancer(5,10);
+    r.peser();
+    r.rencontrerPlot(p2);
+    r.poser();
+
 }

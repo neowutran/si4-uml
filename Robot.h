@@ -11,9 +11,9 @@ class Robot{
     private:
         State _state;
         string _direction;
-        Plot _plotEnFace;
-        Object _object;
-        Position _position;
+        Plot* _plotEnFace;
+        Object* _object;
+        Position* _position;
         bool _afficher = false;
 
     public:

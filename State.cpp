@@ -1,29 +1,29 @@
 #include "State.h"
 
 State State::avancer(int x, int y){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::tourner(string direction){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::figer(){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::repartir(){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::rencontrerPlot(Plot p){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::evaluerPlot(){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::saisir(Object o){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::poser(){
-return *this;
+    throw State::InvalidActionException();
 }
 State State::peser(){
-return *this;
+    throw State::InvalidActionException();
 }

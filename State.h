@@ -7,6 +7,8 @@ using namespace std;
 class State{
 
     public:
+        class InvalidActionException{};
+
         virtual State avancer(int x, int y);
         virtual State tourner(string direction);
         virtual State figer();

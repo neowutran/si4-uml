@@ -14,6 +14,7 @@ class Robot{
         Plot _plotEnFace;
         Object _object;
         Position _position;
+        bool _afficher = false;
 
     public:
         void avancer(int x, int y);
@@ -26,7 +27,7 @@ class Robot{
         void figer();
         void repartir();
         void afficher();
-
+        friend std::ostream& operator<<(std::ostream&, const Robot&);
 
 };
 

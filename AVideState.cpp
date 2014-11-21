@@ -12,10 +12,10 @@ State Vide_state::avancer(int x, int y){
 State Vide_state::tourner(string direction){
     return *this;
 }
-
+/*
 std::ostream& operator<<(std::ostream &strm, const Vide_state &state) {
 
     strm << "State: Vide_state" << endl;
     return strm;
 
-}
+}*/

@@ -9,6 +9,6 @@ class Charge_face_plot_state: public En_route_state{
         virtual State peser();
         virtual State tourner(string direction);
 
-        friend std::ostream& operator<<(std::ostream&, const Charge_face_plot_state&);
+       // friend std::ostream& operator<<(std::ostream&, const Charge_face_plot_state&);
 };
 #endif

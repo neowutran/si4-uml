@@ -14,10 +14,10 @@ State Charge_face_plot_state::tourner(string direction){
 return Charge_state();
 }
 
-
+/*
 std::ostream& operator<<(std::ostream &strm, const Charge_face_plot_state &state) {
 
     strm << "State: Charge_face_plot_state" << endl;
     return strm;
 
-}
+}*/

@@ -10,7 +10,7 @@ class Vide_state: public En_route_state{
         virtual State rencontrerPlot(Plot p);
         virtual State avancer(int x, int y);
         virtual State tourner(string direction);
-       friend std::ostream& operator<<(std::ostream&, const Vide_state&);
+     //  friend std::ostream& operator<<(std::ostream&, const Vide_state&);
 
 };
 #endif

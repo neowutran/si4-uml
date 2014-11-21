@@ -17,6 +17,7 @@ class Robot{
         bool _afficher = false;
 
     public:
+        Robot();
         void avancer(int x, int y);
         void tourner(string direction);
         void saisir(Object o);

@@ -2,11 +2,15 @@
 #define _PLOT_H
 class Plot{
 
-    public: 
+    public:
+        Plot(Object object);
+
         int getHauteur() const;
         Plot(int hauteur);
+        Object getObject();
 
    private:
         int _hauteur;
+        Object _object;
 };
 #endif

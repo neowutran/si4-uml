@@ -14,5 +14,6 @@ class Plot {
         Plot(int hauteur);
         Plot(int hauteur, Object* object);
         Object* getObject();
+        void setObject(Object* object);
 };
 #endif

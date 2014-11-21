@@ -4,6 +4,9 @@
 #include "State.h"
 class Fige_state: public State{
 
+    private:
+        //State _previousState;
+
     public: 
         virtual State repartir();
 

@@ -32,4 +32,9 @@ int main(){
     r.rencontrerPlot(&p2);
     r.poser();
 
+    int a = 1;
+    int* b = &a;
+
+    printf("%d @ %x", a, b);
+
 }

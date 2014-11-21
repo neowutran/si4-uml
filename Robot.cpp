@@ -43,6 +43,8 @@ void Robot::avancer(int x, int y){
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;
     }
     _state = _state.avancer(x, y);
+    _position->setx(x);
+    _position->sety(y);
 }
 void Robot::tourner(string direction){
     if(_afficher){
@@ -60,18 +62,20 @@ void Robot::saisir(Object* o){
 
 }
 void Robot::poser(){
+    _plotEnFace->setObject(_object);
+    _object = nullptr;
     _state = _state.poser();
 }
 int Robot::peser(){
-    _state = _state.poser();
-    return 0;
+    _state = _state.peser();
+    return _object->getPoids();
 }
 void Robot::rencontrerPlot(Plot* p){
     _state = _state.rencontrerPlot(*p);
 }
 int Robot::evaluerPlot(){
     _state = _state.evaluerPlot();
-    return 0;
+    return _plotEnFace->getHauteur();
 }
 void Robot::figer(){
     _state = _state.figer();
@@ -83,5 +87,3 @@ void Robot::repartir(){
 void Robot::afficher(){
     _afficher = true;
 }
-
-

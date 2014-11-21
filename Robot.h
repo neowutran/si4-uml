@@ -17,6 +17,12 @@ class Robot{
         bool _afficher = false;
 
     public:
+        string direction() const;
+        Object object() const;
+        Position position() const;
+        State state() const;
+        Plot plot() const;
+
         Robot();
         void avancer(int x, int y);
         void tourner(string direction);

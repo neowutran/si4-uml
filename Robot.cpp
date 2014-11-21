@@ -6,6 +6,12 @@
 #include "State.h"
 
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
+    strm << "Robot: [" << endl;
+    strm << "\tDirection: " << robot.direction() << endl;
+    //strm << "\tPlot: " << robot.plot() << endl;
+    //strm << "\tState: " << robot.state() << endl;
+    //strm << "\tObject: " << robot.object() << endl;
+    strm << "]" << endl;
     return strm;
 
 }
@@ -16,6 +22,21 @@ Robot::Robot() {
     _position = new Position(0, 0);
 }
 
+Plot Robot::plot() const{
+    return _plotEnFace;
+}
+
+string Robot::direction() const{
+    return _direction;
+}
+
+Object Robot::object() const{
+    return _object;
+}
+
+State Robot::state() const {
+    return _state;
+}
 void Robot::avancer(int x, int y){
     if(_afficher){
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;
@@ -26,6 +47,7 @@ void Robot::tourner(string direction){
     if(_afficher){
         cout << "Methode: tourner(" << direction << " )" << endl;
     }
+    _direction = direction;
     _state = _state.tourner(direction);
 }
 void Robot::saisir(Object o){

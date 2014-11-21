@@ -13,6 +13,6 @@ class Plot {
         int getHauteur() const;
         Plot(int hauteur);
         Plot(int hauteur, Object* object);
-        Object getObject();
+        Object* getObject();
 };
 #endif

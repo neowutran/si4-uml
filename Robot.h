@@ -18,18 +18,18 @@ class Robot{
 
     public:
         string direction() const;
-        Object object() const;
+        Object* object();
         Position position() const;
         State state() const;
-        Plot plot() const;
+        Plot* plot();
 
         Robot();
         void avancer(int x, int y);
         void tourner(string direction);
-        void saisir(Object o);
+        void saisir(Object* o);
         void poser();
         int peser();
-        void rencontrerPlot(Plot p);
+        void rencontrerPlot(Plot* p);
         int evaluerPlot();
         void figer();
         void repartir();

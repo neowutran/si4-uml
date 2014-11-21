@@ -22,7 +22,7 @@ Robot::Robot() {
     _position = new Position(0, 0);
 }
 
-Plot Robot::plot() const{
+Plot * Robot::plot() {
     return _plotEnFace;
 }
 
@@ -30,28 +30,14 @@ string Robot::direction() const{
     return _direction;
 }
 
-Object Robot::object() const{
+Object* Robot::object() {
     return _object;
 }
 
 State Robot::state() const {
     return _state;
 }
-Plot Robot::plot() const{
-    return _plotEnFace;
-}
 
-string Robot::direction() const{
-    return _direction;
-}
-
-Object Robot::object() const{
-    return _object;
-}
-
-State Robot::state() const {
-    return _state;
-}
 void Robot::avancer(int x, int y){
     if(_afficher){
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;
@@ -65,12 +51,12 @@ void Robot::tourner(string direction){
     _direction = direction;
     _state = _state.tourner(direction);
 }
-void Robot::saisir(Object o){
+void Robot::saisir(Object* o){
     if(_afficher){
         cout << "Methode: saisir(";
-
     }
-    _state = _state.saisir(o);
+    _object = o;
+    _state = _state.saisir(*o);
 
 }
 void Robot::poser(){
@@ -80,8 +66,8 @@ int Robot::peser(){
     _state = _state.poser();
     return 0;
 }
-void Robot::rencontrerPlot(Plot p){
-    _state = _state.rencontrerPlot(p);
+void Robot::rencontrerPlot(Plot* p){
+    _state = _state.rencontrerPlot(*p);
 }
 int Robot::evaluerPlot(){
     _state = _state.evaluerPlot();

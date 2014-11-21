@@ -6,4 +6,14 @@ int Plot::getHauteur() const{
 
 Plot::Plot(int hauteur){
     _hauteur = hauteur;
+    _object = nullptr;
+}
+
+Plot::Plot(int hauteur, Object* object) {
+    _hauteur = hauteur;
+    _object = object;
+}
+
+Object Plot::getObject() {
+    return Object(12345);
 }

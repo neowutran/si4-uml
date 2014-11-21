@@ -10,6 +10,12 @@ std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
 
 }
 
+Robot::Robot() {
+    _plotEnFace = nullptr;
+    _object = nullptr;
+    _position = new Position(0, 0);
+}
+
 void Robot::avancer(int x, int y){
     if(_afficher){
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;

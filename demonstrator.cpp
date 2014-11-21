@@ -17,14 +17,14 @@ int main(){
 
     r.avancer(10, 5);
     r.tourner("N");
-    r.rencontrerPlot(p1);
+    r.rencontrerPlot(&p1);
     r.evaluerPlot();
     r.saisir(p1.getObject());
     r.peser();
     r.tourner("S");
     r.avancer(5,10);
     r.peser();
-    r.rencontrerPlot(p2);
+    r.rencontrerPlot(&p2);
     r.poser();
 
 }

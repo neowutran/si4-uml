@@ -12,7 +12,7 @@ class State{
         virtual State figer();
         virtual State repartir();
         virtual State rencontrerPlot(Plot p);
-        virtual State evaluer();
+        virtual State evaluerPlot();
         virtual State saisir(Object o);
         virtual State poser();
         virtual State peser();

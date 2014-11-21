@@ -16,14 +16,13 @@ class Robot{
         Position _position;
 
     public:
-        void changerEtat(State state);
         void avancer(int x, int y);
         void tourner(string direction);
         void saisir(Object o);
         void poser();
         int peser();
         void rencontrerPlot(Plot p);
-        int evaluerPlot(Plot p);
+        int evaluerPlot();
         void figer();
         void repartir();
         void afficher();

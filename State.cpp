@@ -14,10 +14,8 @@ return *this;
 }
 State State::rencontrerPlot(Plot p){
 return *this;
-
-
 }
-State State::evaluer(){
+State State::evaluerPlot(){
 return *this;
 }
 State State::saisir(Object o){

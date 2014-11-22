@@ -15,6 +15,7 @@ r.afficher();
 
     Plot p2 = Plot(10);
 
+
     r.avancer(10, 5);
     r.tourner("N");
     r.rencontrerPlot(&p1);
@@ -31,5 +32,10 @@ r.afficher();
     r.peser();
     r.rencontrerPlot(&p2);
     r.poser();
+
+    /*int a = 1;
+    int* b = &a;
+
+    printf("%d @ %x", a, b);*/
 
 }

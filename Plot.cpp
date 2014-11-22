@@ -14,6 +14,6 @@ Plot::Plot(int hauteur, Object* object) {
     _object = object;
 }
 
-Object* Plot::getObject() {
+Object* Plot::getObject() const {
     return _object;
 }

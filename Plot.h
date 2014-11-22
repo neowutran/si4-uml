@@ -13,6 +13,14 @@ class Plot {
         int getHauteur() const;
         Plot(int hauteur);
         Plot(int hauteur, Object* object);
-        Object* getObject();
+        Object* getObject() const;
+        friend std::ostream& operator<<(std::ostream& strm, const Plot& state){
+            strm << "Plot: [" << endl;
+            strm << "\tHauteur: " << state.getHauteur() << endl;
+            strm << "\tObject: " << state.getObject() << endl;
+            strm << "]";
+            return strm;
+
+        }
 };
 #endif

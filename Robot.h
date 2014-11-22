@@ -18,10 +18,10 @@ class Robot{
 
     public:
         string direction() const;
-        Object* object();
+        Object* object() const;
         Position position() const;
         State state() const;
-        Plot* plot();
+        Plot* plot() const;
 
         Robot();
         void avancer(int x, int y);

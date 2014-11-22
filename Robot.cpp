@@ -8,9 +8,9 @@
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
     strm << "Robot: [" << endl;
     strm << "\tDirection: " << robot.direction() << endl;
-    //strm << "\tPlot: " << robot.plot() << endl;
-    //strm << "\tState: " << robot.state() << endl;
-    //strm << "\tObject: " << robot.object() << endl;
+    strm << "\tPlot: " << robot.plot() << endl;
+    strm << "\tState: " << robot.state() << endl;
+    strm << "\tObject: " << robot.object() << endl;
     strm << "]" << endl;
     return strm;
 
@@ -22,7 +22,7 @@ Robot::Robot() {
     _position = new Position(0, 0);
 }
 
-Plot * Robot::plot() {
+Plot * Robot::plot() const {
     return _plotEnFace;
 }
 
@@ -30,7 +30,7 @@ string Robot::direction() const{
     return _direction;
 }
 
-Object* Robot::object() {
+Object* Robot::object() const {
     return _object;
 }
 

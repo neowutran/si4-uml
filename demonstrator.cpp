@@ -9,7 +9,7 @@ using namespace std;
 int main(){
 
     Robot r = Robot();
-
+r.afficher();
     Object* o1 = new Object(10);
     Plot p1 = Plot(15, o1);
 

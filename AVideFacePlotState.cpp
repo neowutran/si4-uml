@@ -3,13 +3,14 @@
 #include "Object.h"
 using namespace std;
 
-State Vide_face_plot_state::evaluer(){
-    return *this;
-}
-State Vide_face_plot_state::saisir(Object o){
-    return *this;
+shared_ptr<State> Vide_face_plot_state::evaluer() {
+    return Vide_face_plot_state::get_instance();
 }
 
-State Vide_face_plot_state::tourner(string direction){
-    return *this;
+shared_ptr<State> Vide_face_plot_state::saisir(shared_ptr<Object> o) {
+    return Vide_face_plot_state::get_instance();
+}
+
+shared_ptr<State> Vide_face_plot_state::tourner(string direction) {
+    return Vide_face_plot_state::get_instance();
 }

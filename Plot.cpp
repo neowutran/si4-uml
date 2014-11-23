@@ -1,23 +1,23 @@
 #include "Plot.h"
 
-int Plot::getHauteur() const{
+int Plot::getHauteur() const {
     return _hauteur;
 }
 
-Plot::Plot(int hauteur){
+Plot::Plot(int hauteur) {
     _hauteur = hauteur;
     _object = nullptr;
 }
 
-Plot::Plot(int hauteur, Object* object) {
+Plot::Plot(int hauteur, shared_ptr<Object> object) {
     _hauteur = hauteur;
     _object = object;
 }
 
-Object* Plot::getObject() const {
+shared_ptr<Object> Plot::getObject() const {
     return _object;
 }
 
-void Plot::setObject(Object *object) {
+void Plot::setObject(shared_ptr<Object> object) {
     _object = object;
 }

@@ -2,17 +2,30 @@
 #define _CHARGE_FACE_PLOT_STATE_H
 #include <string>
 #include <iostream>
+#include <memory>
+
 #include "EnRouteState.h"
 #include "State.h"
-class Charge_face_plot_state: public En_route_state{
-    public: 
-        virtual State poser();
-        virtual State peser();
-        virtual State tourner(string direction);
-       friend std::ostream& operator<<(std::ostream& strm, const Charge_face_plot_state& state){
-          strm << "State: Charge_face_plot_state" << endl;
-          return strm;
 
-       }
+class Charge_face_plot_state : public En_route_state {
+private:
+
+    Charge_face_plot_state() {
+    }
+    Charge_face_plot_state(Charge_face_plot_state const&) = delete;
+    void operator=(Charge_face_plot_state const &) = delete;
+public:
+
+    static shared_ptr<Charge_face_plot_state> get_instance() {
+        static shared_ptr<Charge_face_plot_state> _instance(new Charge_face_plot_state());
+        return _instance;
+    }
+
+    string get_name() const {
+        return "Charge face plot";
+    }
+    virtual shared_ptr<State> poser();
+    virtual shared_ptr<State> peser();
+    virtual shared_ptr<State> tourner(string direction);
 };
 #endif

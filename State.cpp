@@ -1,29 +1,37 @@
 #include "State.h"
 
-State State::avancer(int x, int y){
+shared_ptr<State> State::avancer(int x, int y) {
     throw State::InvalidActionException();
 }
-State State::tourner(string direction){
+
+shared_ptr<State> State::tourner(string direction) {
     throw State::InvalidActionException();
 }
-State State::figer(){
+
+shared_ptr<State> State::figer() {
     throw State::InvalidActionException();
 }
-State State::repartir(){
+
+shared_ptr<State> State::repartir() {
     throw State::InvalidActionException();
 }
-State State::rencontrerPlot(Plot p){
+
+shared_ptr<State> State::rencontrerPlot(shared_ptr<Plot> p) {
     throw State::InvalidActionException();
 }
-State State::evaluerPlot(){
+
+shared_ptr<State> State::evaluerPlot() {
     throw State::InvalidActionException();
 }
-State State::saisir(Object o){
+
+shared_ptr<State> State::saisir(shared_ptr<Object> o) {
     throw State::InvalidActionException();
 }
-State State::poser(){
+
+shared_ptr<State> State::poser() {
     throw State::InvalidActionException();
 }
-State State::peser(){
+
+shared_ptr<State> State::peser() {
     throw State::InvalidActionException();
 }

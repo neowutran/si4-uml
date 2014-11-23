@@ -3,16 +3,20 @@
 #include "State.h"
 #include "Plot.h"
 using namespace std;
-State Charge_state::avancer(int x, int y){
-    return *this;
+
+shared_ptr<State> Charge_state::avancer(int x, int y) {
+    return Charge_state::get_instance();
 }
-State Charge_state::peser(){
-    return *this;
+
+shared_ptr<State> Charge_state::peser() {
+    return Charge_state::get_instance();
 }
-State Charge_state::rencontrerPlot(Plot p){
-    return *this;
+
+shared_ptr<State> Charge_state::rencontrerPlot(shared_ptr<Plot> p) {
+    return Charge_state::get_instance();
 }
-State Charge_state::tourner(string direction){
-    return *this;
+
+shared_ptr<State> Charge_state::tourner(string direction) {
+    return Charge_state::get_instance();
 }
 

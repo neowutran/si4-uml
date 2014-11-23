@@ -4,6 +4,9 @@
 #include "Object.h"
 #include "Plot.h"
 #include "State.h"
+#include "FigeState.h"
+#include "EnRouteState.h"
+#include "AVideState.h"
 
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
     strm << "Robot: [" << endl;
@@ -16,75 +19,124 @@ std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
 
 }
 
-Robot::Robot() {
-    _plotEnFace = nullptr;
-    _object = nullptr;
-    _position = new Position(0, 0);
+Robot::Robot() : _state(Vide_state::get_instance()), _plotEnFace(nullptr), _direction("N"), _object(nullptr), _position(Position(0, 0)) {
 }
 
-Plot * Robot::plot() const {
+shared_ptr<Plot> Robot::plot() const {
     return _plotEnFace;
 }
 
-string Robot::direction() const{
+string Robot::direction() const {
     return _direction;
 }
 
-Object* Robot::object() const {
+shared_ptr<Object> Robot::object() const {
     return _object;
 }
 
-State Robot::state() const {
+shared_ptr<State> Robot::state() const {
     return _state;
 }
 
-void Robot::avancer(int x, int y){
-    if(_afficher){
+void Robot::avancer(int x, int y) {
+    if (_afficher) {
         cout << "Methode: avancer(" << x << ", " << y << ")" << endl;
     }
-    _state = _state.avancer(x, y);
-    _position->setx(x);
-    _position->sety(y);
+    _state = _state->avancer(x, y);
+    _position.setx(x);
+    _position.sety(y);
+    if (_afficher) {
+        cout << *this;
+    }
 }
-void Robot::tourner(string direction){
-    if(_afficher){
+
+void Robot::tourner(string direction) {
+    if (_afficher) {
         cout << "Methode: tourner(" << direction << " )" << endl;
     }
     _direction = direction;
-    _state = _state.tourner(direction);
+    _state = _state->tourner(direction);
+    if (_afficher) {
+        cout << *this;
+    }
 }
-void Robot::saisir(Object* o){
-    if(_afficher){
+
+void Robot::saisir(shared_ptr<Object> o) {
+    if (_afficher) {
         cout << "Methode: saisir(";
     }
     _object = o;
-    _state = _state.saisir(*o);
-
+    _state = _state->saisir(o);
+    if (_afficher) {
+        cout << *this;
+    }
 }
-void Robot::poser(){
+
+void Robot::poser() {
+    if (_afficher) {
+        cout << "Methode: poser()" << endl;
+    }
     _plotEnFace->setObject(_object);
     _object = nullptr;
-    _state = _state.poser();
+    _state = _state->poser();
+    if (_afficher) {
+        cout << *this;
+    }
 }
-int Robot::peser(){
-    _state = _state.peser();
+
+int Robot::peser() {
+    if (_afficher) {
+        cout << "Methode: peser()" << endl;
+    }
+    _state = _state->peser();
+    if (_afficher) {
+        cout << *this;
+    }
     return _object->getPoids();
 }
-void Robot::rencontrerPlot(Plot* p){
-    _state = _state.rencontrerPlot(*p);
+
+void Robot::rencontrerPlot(shared_ptr<Plot> p) {
+    if (_afficher) {
+        cout << "Methode: rencontrerPlot(" << p << ")" << endl;
+    }
+    _state = _state->rencontrerPlot(p);
     _plotEnFace = p;
+    if (_afficher) {
+        cout << *this;
+    }
 }
-int Robot::evaluerPlot(){
-    _state = _state.evaluerPlot();
+
+int Robot::evaluerPlot() {
+    if (_afficher) {
+        cout << "Methode: evaluerPlot()" << endl;
+    }
+    _state = _state->evaluerPlot();
+    if (_afficher) {
+        cout << *this;
+    }
     return _plotEnFace->getHauteur();
 }
-void Robot::figer(){
-    _state = _state.figer();
-}
-void Robot::repartir(){
-    _state = _state.repartir();
 
+void Robot::figer() {
+    if (_afficher) {
+        cout << "Methode: figer()" << endl;
+    }
+    _state = _state->figer();
+    if (_afficher) {
+        cout << *this;
+    }
 }
-void Robot::afficher(){
+
+void Robot::repartir() {
+    if (_afficher) {
+        cout << "Methode: repartir()" << endl;
+    }
+    _state = _state->repartir();
+    if (_afficher) {
+        cout << *this;
+    }
+}
+
+void Robot::afficher() {
     _afficher = true;
 }

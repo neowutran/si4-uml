@@ -13,8 +13,8 @@ ALL = demonstrator
 
 # targets
 
-demonstrator : demonstrator.o Position.o State.o Plot.o Object.o Robot.o FigeState.o EnRouteState.o AVideFacePlotState.o AVideState.o EnChargeState.o EnChargeFacePlotState.o 
-	$(CXX_LINK) -o demonstrator demonstrator.o Position.o State.o Plot.o Object.o Robot.o FigeState.o EnRouteState.o AVideFacePlotState.o AVideState.o EnChargeState.o EnChargeFacePlotState.o 
+demonstrator : demonstrator.o Position.o Plot.o Object.o Robot.o FigeState.o EnRouteState.o AVideFacePlotState.o AVideState.o EnChargeState.o EnChargeFacePlotState.o 
+	$(CXX_LINK) -o demonstrator demonstrator.o Position.o Plot.o Object.o Robot.o FigeState.o EnRouteState.o AVideFacePlotState.o AVideState.o EnChargeState.o EnChargeFacePlotState.o 
 
 dox : $(wildcard *.h *.cpp)
 	doxygen 
@@ -29,12 +29,11 @@ extra_clean :
 Position.o: Position.h
 Plot.o: Plot.h
 Obejct.o: Object.h
-State.o : State.h
-Robot.o: Robot.h State.h Object.h Plot.h Position.h
-demonstrator.o: Robot.h State.h Object.h Plot.h Position.h
+Robot.o: Robot.h Object.h Plot.h Position.h
+demonstrator.o: Robot.h Object.h Plot.h Position.h
 EnRouteState.o: EnRouteState.h
 AVideFacePlotState.o: AVideFacePlotState.h
 AVideState.o: AVideState.h
 EnChargeState.o: EnChargeState.h
-EnChargeFacePlotState.o: EnChargeFacePlotState.h State.h Plot.h
+EnChargeFacePlotState.o: EnChargeFacePlotState.h Plot.h
 FigeState.o: FigeState.h 

@@ -1,6 +1,5 @@
 #include <string>
 #include "FigeState.h"
-#include "State.h"
 using namespace std;
 
 Fige_state::Fige_state(shared_ptr<State> currentState) {

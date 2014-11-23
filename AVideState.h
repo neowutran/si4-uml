@@ -4,7 +4,7 @@
 #include <iostream>
 #include <memory>
 
-#include "State.h"
+#include "Robot.h"
 #include "EnRouteState.h"
 using namespace std;
 
@@ -14,6 +14,8 @@ private:
     Vide_state() : En_route_state() {
     }
 public:
+    shared_ptr<State> figer();
+
 
     static shared_ptr<Vide_state> get_instance() {
         static shared_ptr<Vide_state> _instance(new Vide_state());

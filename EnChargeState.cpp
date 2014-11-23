@@ -1,7 +1,6 @@
 #include <string>
 #include "EnChargeState.h"
-#include "State.h"
-#include "Plot.h"
+#include "EnChargeFacePlotState.h"
 using namespace std;
 
 shared_ptr<State> Charge_state::avancer(int x, int y) {
@@ -13,10 +12,12 @@ shared_ptr<State> Charge_state::peser() {
 }
 
 shared_ptr<State> Charge_state::rencontrerPlot(shared_ptr<Plot> p) {
-    return Charge_state::get_instance();
+    return Charge_face_plot_state::get_instance();
 }
 
 shared_ptr<State> Charge_state::tourner(string direction) {
     return Charge_state::get_instance();
 }
-
+shared_ptr<State> Charge_state::figer() { 
+    return make_shared<Fige_state>(Fige_state(Charge_state::get_instance()));
+}

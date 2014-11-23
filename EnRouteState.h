@@ -1,7 +1,8 @@
 #ifndef _EN_ROUTE_STATE_H
 #define _EN_ROUTE_STATE_H
 #include <memory>
-#include "State.h"
+#include "Robot.h"
+#include "FigeState.h"
 #include <string>
 
 class En_route_state : public State {
@@ -11,7 +12,6 @@ protected:
     }
 
 public:
-    virtual shared_ptr<State> figer();
 
     virtual string get_name() const {
         return "En route";

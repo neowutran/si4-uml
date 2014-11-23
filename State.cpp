@@ -1,5 +1,24 @@
-#include "State.h"
 
+#include "Robot.h"
+#include <algorithm>
+
+void State::Attach(IObserver* robot)
+{
+    list.push_back(robot);
+}
+void State::Detach(IObserver* robot)
+{    
+    list.erase(std::remove(list.begin(), list.end(), robot), list.end());    
+}
+
+    void State::Notify(shared_ptr<Object> object, shared_ptr<Plot> plot, shared_ptr<State> state, shared_ptr<Position> position, string direction){
+    for(int i = 0; i < list.size(); i++){
+   
+        
+            list.at(i)->Update(direction);
+        
+    }
+}
 shared_ptr<State> State::avancer(int x, int y) {
     throw State::InvalidActionException();
 }

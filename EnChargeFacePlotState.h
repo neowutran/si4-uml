@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "EnRouteState.h"
-#include "State.h"
+#include "Robot.h"
 
 class Charge_face_plot_state : public En_route_state {
 private:
@@ -15,6 +15,8 @@ private:
     Charge_face_plot_state(Charge_face_plot_state const&) = delete;
     void operator=(Charge_face_plot_state const &) = delete;
 public:
+    shared_ptr<State> figer();
+
 
     static shared_ptr<Charge_face_plot_state> get_instance() {
         static shared_ptr<Charge_face_plot_state> _instance(new Charge_face_plot_state());

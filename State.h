@@ -2,18 +2,25 @@
 #define _STATE_H
 #include <string>
 #include <memory>
-#include "Plot.h"
-#include "Object.h"
+#include <list>
+#include <vector>
+#include "Robot.h"
+
 using namespace std;
 
 class State {
-protected:
+vector<IObserver*> list;
+    protected:
 
     State() {
     }
 
+    
 public:
 
+    void Attach(IObserver* robot);
+    void Detach(IObserver* robot);
+    void Notify(shared_ptr<Object> object, shared_ptr<Plot> plot, shared_ptr<State> state, shared_ptr<Position>, string direction);
     class InvalidActionException {
     };
     virtual shared_ptr<State> avancer(int x, int y);

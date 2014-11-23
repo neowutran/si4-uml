@@ -3,11 +3,14 @@
 #include "Robot.h"
 #include "Object.h"
 #include "Plot.h"
-#include "State.h"
 #include "FigeState.h"
 #include "EnRouteState.h"
 #include "AVideState.h"
 
+void Robot::Update(string direction){
+
+
+} 
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
     strm << "Robot: [" << endl;
     strm << "\tDirection: " << robot.direction() << endl;

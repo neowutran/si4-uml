@@ -48,6 +48,10 @@ public:
         return strm;
 
     }
+
+    string toString() const {
+        return get_name();
+    }
 };
 
 

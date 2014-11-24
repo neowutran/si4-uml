@@ -2,6 +2,10 @@
 #ifndef _POSITION_H
 #define _POSITION_H
 
+#include <string>
+
+using namespace std;
+
 class Position {
 
     private: 
@@ -14,6 +18,8 @@ class Position {
         void sety(int y);
         int getx() const;
         int gety() const;
+
+        string toString() const;
 
 };
 

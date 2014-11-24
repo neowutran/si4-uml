@@ -5,20 +5,34 @@
 #include "AVideState.h"
 #include <algorithm>
 
+string Robot::toString() const {
+    const Robot* r = this;
+    string result = "Robot: "+r->getNom()+" [\n"
+        "\tPosition: "+r->position().toString()+"\n"
+        "\tDirection: "+r->direction()+"\n"
+        "\tPlot: "+r->plot()->toString()+"\n"
+        "\tState: "+r->state()->toString()+"\n"
+        "\tObject: "+r->object()->toString()+"\n"
+    "]";
+
+    return result;
+}
 
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
-    strm << "Robot: [" << endl;
+    return strm << robot.toString() << endl;
+    /*strm << "Robot: " << robot.getNom() << " [" << endl;
+    strm << "\tPosition: " << robot.position().getx() << "," << robot.position().gety() << endl;
     strm << "\tDirection: " << robot.direction() << endl;
     strm << "\tPlot: " << robot.plot() << endl;
     strm << "\tState: " << robot.state() << endl;
     strm << "\tObject: " << robot.object() << endl;
     strm << "]" << endl;
-    return strm;
-
+    strm << robot.toString() << endl;
+    return strm;*/
 }
 
-Robot::Robot(): _position(Position(0,0)) {
-    
+Robot::Robot(string name): _position(Position(0,0)) {
+    _name = name;
     _state = Vide_state::get_instance();
     _direction = "N";
 }
@@ -35,110 +49,77 @@ shared_ptr<Object> Robot::object() const {
     return _object;
 }
 
+Position Robot::position() const {
+    return _position;
+}
+
 shared_ptr<State> Robot::state() const {
     return _state;
 }
 
 void Robot::avancer(int x, int y) {
-    if (_afficher) {
-        cout << "Methode: avancer(" << x << ", " << y << ")" << endl;
-    }
     _state = _state->avancer(x, y);
     _position.setx(x);
     _position.sety(y);
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("avancer(" + to_string(x) + ", " + to_string(y) + ")");
 }
 
 void Robot::tourner(string direction) {
-    if (_afficher) {
-        cout << "Methode: tourner(" << direction << " )" << endl;
-    }
     _direction = direction;
     _state = _state->tourner(direction);
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("tourner("+ direction + ")");
 }
 
 void Robot::saisir(shared_ptr<Object> o) {
-    if (_afficher) {
-        cout << "Methode: saisir(";
-    }
     _object = o;
     _state = _state->saisir(o);
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("saisir(TODO)");
 }
 
 void Robot::poser() {
-    if (_afficher) {
-        cout << "Methode: poser()" << endl;
-    }
     _plotEnFace->setObject(_object);
     _object = nullptr;
     _state = _state->poser();
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("poser()");
 }
 
 int Robot::peser() {
-    if (_afficher) {
-        cout << "Methode: peser()" << endl;
-    }
     _state = _state->peser();
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("peser()");
     return _object->getPoids();
 }
 
 void Robot::rencontrerPlot(shared_ptr<Plot> p) {
-    if (_afficher) {
-        cout << "Methode: rencontrerPlot(" << p << ")" << endl;
-    }
     _state = _state->rencontrerPlot(p);
     _plotEnFace = p;
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("rencontrerPlot(" + p->toString() + ")");
 }
 
 int Robot::evaluerPlot() {
-    if (_afficher) {
-        cout << "Methode: evaluerPlot()" << endl;
-    }
     _state = _state->evaluerPlot();
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("evaluerPlot()");
     return _plotEnFace->getHauteur();
 }
 
 void Robot::figer() {
-    if (_afficher) {
-        cout << "Methode: figer()" << endl;
-    }
     _state = _state->figer();
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("figer()");
 }
 
 void Robot::repartir() {
-    if (_afficher) {
-        cout << "Methode: repartir()" << endl;
-    }
     _state = _state->repartir();
-    if (_afficher) {
-        cout << *this;
-    }
+    NotifyAll("repartir()");
 }
 
-void Robot::afficher() {
+void Robot::setAfficher() {
     _afficher = true;
 }
 
+
+bool Robot::getAfficher() const {
+    return _afficher;
+}
+
+void Robot::afficher() {
+    cout << *this;
+}

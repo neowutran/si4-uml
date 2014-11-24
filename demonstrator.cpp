@@ -1,11 +1,18 @@
 #include "Robot.h"
+#include "AfficheurRobot.h"
 
 using namespace std;
 
 int main() {
 
-    Robot r = Robot();
-    r.afficher();
+    AfficheurRobot aff = AfficheurRobot();
+    Robot r = Robot("Robot1");
+
+    r.Attach(&aff);
+
+    r.setAfficher();    // activation de l'affichage automatique
+    r.afficher();       // affichage initial
+
     shared_ptr<Object> o1 = make_shared<Object>(Object(10));
     shared_ptr<Plot> p1 = make_shared<Plot>(Plot(15, o1));
 

@@ -1,5 +1,7 @@
 #include "Position.h"
 
+using namespace std;
+
 Position::Position(int x, int y){
     _x = x;
     _y = y;
@@ -21,3 +23,6 @@ void Position::sety(int y){
     _y = y;
 }
 
+string Position::toString() const {
+    return "("+to_string(getx())+", "+to_string(gety())+")";
+}

@@ -15,13 +15,21 @@ public:
     Plot(int hauteur, shared_ptr<Object> object);
     shared_ptr<Object> getObject() const;
 
-    friend std::ostream& operator<<(std::ostream& strm, const Plot& state) {
-        strm << "Plot: [" << endl;
-        strm << "\tHauteur: " << state.getHauteur() << endl;
-        strm << "\tObject: " << state.getObject() << endl;
-        strm << "]";
-        return strm;
+    string toString() const {
+        // TODO: maybe improve this ?
+        if (this == nullptr) return "null";
 
+        const Plot* state = this;
+        string result = "Plot: [\n"
+                "\tHauteur: " + to_string(state->getHauteur())+"\n"+
+                "\tObject: " + state->getObject()->toInlineString()+"\n"+
+                "]\n";
+        return result;
+    }
+
+
+    friend std::ostream& operator<<(std::ostream& strm, const Plot& state) {
+        return strm << state.toString();
     }
 };
 #endif

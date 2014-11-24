@@ -7,20 +7,32 @@
 using namespace std;
 
 class Object {
+private:
+    int _poids;
+
 public:
     int getPoids() const;
     Object(int poids);
 
+    string toInlineString() const {
+        return "Object:[Poids:"+to_string(getPoids())+"]";
+    }
+
+    string toString() const {
+        const string result = "Object:[\n"
+            //"\tPoids: " + to_string(this->getPoids()) + "\n"
+                "\t\tPoids: " + to_string(3) + "\n"
+            "\t]";
+        return result;
+    }
+
     friend std::ostream& operator<<(std::ostream& strm, const Object& state) {
-        strm << "Object:[" << endl;
+        return strm << state.toString();
+        /*strm << "Object:[" << endl;
         strm << "\tPoids:" << state.getPoids() << endl;
         strm << "]" << endl;
-        return strm;
+        return strm;*/
 
     }
-private:
-    int _poids;
-
-
 };
 #endif

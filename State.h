@@ -7,23 +7,21 @@
 #include "Plot.h"
 #include "Position.h"
 #include "Robot.h"
+
 using namespace std;
+
 class IObserver;
 class Vide_state;
-class State {
-    vector<IObserver*> list;
-    protected:
 
+class State {
+    //vector<IObserver*> list;
+
+protected:
     State() {}
 
+public:
 
-    public:
-
-    void Attach(IObserver* robot);
-    void Detach(IObserver* robot);
-    void Notify(shared_ptr<Object> object, shared_ptr<Plot> plot, shared_ptr<State> state, shared_ptr<Position>, string direction);
-    class InvalidActionException {
-    };
+    class InvalidActionException {};
     virtual shared_ptr<State> avancer(int x, int y);
     virtual shared_ptr<State> tourner(string direction);
     virtual shared_ptr<State> figer();

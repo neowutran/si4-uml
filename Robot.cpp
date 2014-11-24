@@ -4,10 +4,8 @@
 #include "FigeState.h"
 #include "AVideState.h"
 #include <algorithm>
-void Robot::Update(string direction){
 
 
-} 
 std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
     strm << "Robot: [" << endl;
     strm << "\tDirection: " << robot.direction() << endl;
@@ -19,7 +17,7 @@ std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
 
 }
 
-Robot::Robot(): _position(Position(0,0)){
+Robot::Robot(): _position(Position(0,0)) {
     
     _state = Vide_state::get_instance();
     _direction = "N";

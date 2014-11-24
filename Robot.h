@@ -10,15 +10,44 @@
 #include "Position.h"
 #include "State.h"
 using namespace std;
+
 class State;
+class IObservable;
+
 class IObserver{
 
-    public: 
-        virtual void Update(string direction) = 0;
+    private:
+        vector<IObservable*> _observables;
+
+    public:
+        virtual void Update(IObservable* observable, string message) = 0;
 
 };
 
-class Robot : IObserver{
+class IObservable {
+
+    private:
+        vector<IObserver*> _observers;
+
+    public:
+        void NotifyAll(string message) {
+            for (uint i = 0; i < _observers.size(); ++i) {
+                _observers.at(i)->Update(this, message);
+            }
+        }
+
+        void Attach(IObserver* robot) {
+            _observers.push_back(robot);
+        }
+
+        void Detach(IObserver* robot) {
+            _observers.erase(std::remove(_observers.begin(), _observers.end(), robot), _observers.end());
+        }
+
+};
+
+class Robot : IObservable {
+
     private:
         shared_ptr<State> _state = nullptr;
         string _direction;
@@ -34,7 +63,6 @@ class Robot : IObserver{
         shared_ptr<State> state() const;
         shared_ptr<Plot> plot() const;
 
-        void Update(string direction);
         Robot();
         void avancer(int x, int y);
         void tourner(string direction);

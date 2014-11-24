@@ -15,7 +15,6 @@ shared_ptr<State> Vide_face_plot_state::saisir(shared_ptr<Object> o) {
 
 shared_ptr<State> Vide_face_plot_state::tourner(string direction) {
     return Vide_state::get_instance();
-
 }
 
 shared_ptr<State> Vide_face_plot_state::figer() {

@@ -2,6 +2,7 @@
 #include "AVideFacePlotState.h"
 #include "EnChargeFacePlotState.h"
 #include "AVideState.h"
+#include "FigeState.h"
 using namespace std;
 
 shared_ptr<State> Vide_face_plot_state::evaluerPlot() {

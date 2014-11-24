@@ -3,11 +3,9 @@
 #include <string>
 #include <iostream>
 #include <memory>
-
-#include "EnRouteState.h"
 #include "Robot.h"
 
-class Charge_state : public En_route_state {
+class Charge_state : public State {
 private:
 
     Charge_state() {

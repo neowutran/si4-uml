@@ -4,14 +4,13 @@
 #include <iostream>
 #include <memory>
 
-#include "Robot.h"
-#include "EnRouteState.h"
+#include "State.h"
+#include "Plot.h"
 using namespace std;
-
-class Vide_state : public En_route_state {
+class Vide_state : public State {
 private:
 
-    Vide_state() : En_route_state() {
+    Vide_state() {
     }
 public:
     shared_ptr<State> figer();

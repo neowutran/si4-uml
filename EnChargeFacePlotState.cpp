@@ -2,6 +2,7 @@
 #include "EnChargeFacePlotState.h"
 #include "EnChargeState.h"
 #include "AVideFacePlotState.h"
+#include "FigeState.h"
 using namespace std;
 
 shared_ptr<State> Charge_face_plot_state::poser() {

@@ -1,6 +1,7 @@
 #include <string>
 #include "EnChargeState.h"
 #include "EnChargeFacePlotState.h"
+#include "FigeState.h"
 using namespace std;
 
 shared_ptr<State> Charge_state::avancer(int x, int y) {

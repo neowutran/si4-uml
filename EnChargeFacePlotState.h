@@ -4,10 +4,9 @@
 #include <iostream>
 #include <memory>
 
-#include "EnRouteState.h"
 #include "Robot.h"
 
-class Charge_face_plot_state : public En_route_state {
+class Charge_face_plot_state : public State {
 private:
 
     Charge_face_plot_state() {

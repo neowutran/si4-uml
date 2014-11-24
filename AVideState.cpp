@@ -2,6 +2,7 @@
 #include <iostream>
 #include "AVideState.h"
 #include "AVideFacePlotState.h"
+#include "FigeState.h"
 using namespace std;
 
 shared_ptr<State> Vide_state::rencontrerPlot(shared_ptr<Plot> p) {

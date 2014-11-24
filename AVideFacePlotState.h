@@ -3,10 +3,9 @@
 #include <string>
 #include <iostream>
 #include <memory>
-#include "EnRouteState.h"
 #include "Robot.h"
 
-class Vide_face_plot_state : public En_route_state {
+class Vide_face_plot_state : public State {
 private:
 
     Vide_face_plot_state() {

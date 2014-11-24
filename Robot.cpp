@@ -1,12 +1,9 @@
 #include <iostream>
 #include <string>
 #include "Robot.h"
-#include "Object.h"
-#include "Plot.h"
 #include "FigeState.h"
-#include "EnRouteState.h"
 #include "AVideState.h"
-
+#include <algorithm>
 void Robot::Update(string direction){
 
 
@@ -22,7 +19,10 @@ std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
 
 }
 
-Robot::Robot() : _state(Vide_state::get_instance()), _plotEnFace(nullptr), _direction("N"), _object(nullptr), _position(Position(0, 0)) {
+Robot::Robot(): _position(Position(0,0)){
+    
+    _state = Vide_state::get_instance();
+    _direction = "N";
 }
 
 shared_ptr<Plot> Robot::plot() const {
@@ -143,3 +143,4 @@ void Robot::repartir() {
 void Robot::afficher() {
     _afficher = true;
 }
+

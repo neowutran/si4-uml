@@ -1,14 +1,7 @@
 #include "State.h"
 #include "AVideState.h"
-#include <algorithm>
-class IObserver;
 
-/*
-void State::Notify(shared_ptr<Object> object, shared_ptr<Plot> plot, shared_ptr<State> state, shared_ptr<Position> position, string direction){
-    for(uint i = 0; i < list.size(); i++){
-        list.at(i)->Update(direction);
-    }
-}*/
+
 shared_ptr<State> State::avancer(int x, int y) {
     throw State::InvalidActionException();
 }

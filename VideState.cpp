@@ -18,5 +18,5 @@ shared_ptr<State> VideState::tourner(string direction) {
     return VideState::get_instance();
 }
 shared_ptr<State> VideState::figer() {
-    return make_shared<FigeState>(FigeState(VideState::get_instance()));
+    return FigeState::get_instance(VideState::get_instance());
 }

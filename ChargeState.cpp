@@ -20,5 +20,5 @@ shared_ptr<State> ChargeState::tourner(string direction) {
     return ChargeState::get_instance();
 }
 shared_ptr<State> ChargeState::figer() {
-    return make_shared<FigeState>(FigeState(ChargeState::get_instance()));
+    return FigeState::get_instance(ChargeState::get_instance());
 }

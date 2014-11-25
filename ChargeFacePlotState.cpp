@@ -17,5 +17,5 @@ shared_ptr<State> ChargeFacePlotState::tourner(string direction) {
     return ChargeState::get_instance();
 }
 shared_ptr<State> ChargeFacePlotState::figer() {
-    return make_shared<FigeState>(FigeState(ChargeFacePlotState::get_instance()));
+    return FigeState::get_instance(ChargeFacePlotState::get_instance());
 }

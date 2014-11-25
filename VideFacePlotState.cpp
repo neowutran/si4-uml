@@ -18,5 +18,5 @@ shared_ptr<State> VideFacePlotState::tourner(string direction) {
 }
 
 shared_ptr<State> VideFacePlotState::figer() {
-    return make_shared<FigeState>(FigeState(VideFacePlotState::get_instance()));
+    return FigeState::get_instance(VideFacePlotState::get_instance());
 }

@@ -39,5 +39,5 @@ int main() {
       int* b = &a;
 
       printf("%d @ %x", a, b);*/
-
+    cout << "==== THE END ====" << endl;
 }

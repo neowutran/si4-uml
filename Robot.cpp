@@ -4,31 +4,30 @@
 #include "FigeState.h"
 #include "AVideState.h"
 #include <algorithm>
+#include <sstream>
 
-string Robot::toString() const {
-    const Robot* r = this;
-    string result = "Robot: "+r->getNom()+" [\n"
-        "\tPosition: "+r->position().toString()+"\n"
-        "\tDirection: "+r->direction()+"\n"
-        "\tPlot: "+r->plot()->toString()+"\n"
-        "\tState: "+r->state()->toString()+"\n"
-        "\tObject: "+r->object()->toString()+"\n"
-    "]";
+ostream& Robot::print(ostream& os) const {
+    os << "Robot " << getNom() << " [" << endl;
+    os << "\tState: " << state() << endl;
+    os << "\tPosition: " << position().getx() << "," << position().gety() << endl;
+    os << "\tDirection: " << direction() << endl;
 
-    return result;
+    os << "\tPlot: " ;
+    if (plot()) os << *plot();
+    else os << "null";
+    os << endl;
+
+    os << "\tObject: ";
+    if (object()) os << *object();
+    else os << "null";
+    os << endl;
+
+    os << "]" << endl;
+    return os;
 }
 
-std::ostream& operator<<(std::ostream &strm, const Robot &robot) {
-    return strm << robot.toString() << endl;
-    /*strm << "Robot: " << robot.getNom() << " [" << endl;
-    strm << "\tPosition: " << robot.position().getx() << "," << robot.position().gety() << endl;
-    strm << "\tDirection: " << robot.direction() << endl;
-    strm << "\tPlot: " << robot.plot() << endl;
-    strm << "\tState: " << robot.state() << endl;
-    strm << "\tObject: " << robot.object() << endl;
-    strm << "]" << endl;
-    strm << robot.toString() << endl;
-    return strm;*/
+std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
+    return robot.print(strm) << endl;
 }
 
 Robot::Robot(string name): _position(Position(0,0)) {
@@ -61,13 +60,21 @@ void Robot::avancer(int x, int y) {
     _state = _state->avancer(x, y);
     _position.setx(x);
     _position.sety(y);
-    NotifyAll("avancer(" + to_string(x) + ", " + to_string(y) + ")");
+
+    stringstream message;
+    message << "avancer(" << x << ", " << y << ")";
+    NotifyAll(message.str());
+    //NotifyAll("avancer(" + to_string(x) + ", " + to_string(y) + ")");
 }
 
 void Robot::tourner(string direction) {
     _direction = direction;
     _state = _state->tourner(direction);
-    NotifyAll("tourner("+ direction + ")");
+
+    stringstream message;
+    message << "tourner(" << direction << ")";
+    NotifyAll(message.str());
+    //NotifyAll("tourner("+ direction + ")");
 }
 
 void Robot::saisir(shared_ptr<Object> o) {
@@ -92,7 +99,10 @@ int Robot::peser() {
 void Robot::rencontrerPlot(shared_ptr<Plot> p) {
     _state = _state->rencontrerPlot(p);
     _plotEnFace = p;
-    NotifyAll("rencontrerPlot(" + p->toString() + ")");
+
+    stringstream message;
+    message << "rencontrerPlot(" << p << ")";
+    NotifyAll(message.str());
 }
 
 int Robot::evaluerPlot() {

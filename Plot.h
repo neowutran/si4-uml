@@ -1,5 +1,6 @@
 #ifndef _PLOT_H
 #define _PLOT_H
+
 #include <memory>
 #include "Object.h"
 
@@ -15,21 +16,20 @@ public:
     Plot(int hauteur, shared_ptr<Object> object);
     shared_ptr<Object> getObject() const;
 
-    string toString() const {
-        // TODO: maybe improve this ?
-        if (this == nullptr) return "null";
+    ostream& print(ostream& os) const {
+        os << "Plot[\n"
+            << "\t\tHauteur: " << getHauteur() << "\n";
 
-        const Plot* state = this;
-        string result = "Plot: [\n"
-                "\tHauteur: " + to_string(state->getHauteur())+"\n"+
-                "\tObject: " + state->getObject()->toInlineString()+"\n"+
-                "]\n";
-        return result;
+            os << "\t\tObject: ";
+            if (getObject()) os << *getObject() ;
+            else os << "null";
+        os << "\t]";
+        return os;
     }
 
 
-    friend std::ostream& operator<<(std::ostream& strm, const Plot& state) {
-        return strm << state.toString();
+    friend std::ostream& operator<<(std::ostream& os, const Plot& plot) {
+        return plot.print(os);
     }
 };
 #endif

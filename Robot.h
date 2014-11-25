@@ -60,15 +60,14 @@ class IObservable {
 };
 
 class Robot : public IObservable {
-
-    private:
-        shared_ptr<State> _state = nullptr;
-        string _direction;
-        shared_ptr<Plot> _plotEnFace = nullptr;
-        shared_ptr<Object> _object = nullptr;
-        Position _position;
-        bool _afficher = false;
-        string _name = "DefaultName";
+private:
+    shared_ptr<State> _state = nullptr;
+    string _direction;
+    shared_ptr<Plot> _plotEnFace = nullptr;
+    shared_ptr<Object> _object = nullptr;
+    Position _position;
+    bool _afficher = false;
+    string _name = "DefaultName";
 
 public:
     string direction() const;
@@ -96,7 +95,7 @@ public:
     bool getAfficher() const;
     void setAfficher();
 
-    string toString() const;
+    ostream& print(ostream& os) const;
     friend std::ostream& operator<<(std::ostream&, const Robot&);
 
 };

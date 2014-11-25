@@ -12,7 +12,9 @@ public :
         Robot* r = static_cast<Robot*>(observable);
 
         if (r->getAfficher()) {
+            cout << "\n========================" << endl ;
             cout << r->getNom() << " vient d'effectuer l'action: " << message << endl;
+            cout << "\n";
             cout << "Etat après action: ";
             r->afficher();
         }

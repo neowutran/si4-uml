@@ -23,7 +23,7 @@ int main() {
     r.rencontrerPlot(p1);
     r.figer();
     r.repartir();
-    r.evaluerPlot();
+    cout << "Plot évalué à: " << r.evaluerPlot() << endl;
     r.saisir(p1->getObject());
     r.peser();
     r.figer();

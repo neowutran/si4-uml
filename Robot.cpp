@@ -27,7 +27,7 @@ ostream& Robot::print(ostream& os) const {
 }
 
 std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
-    return robot.print(strm) << endl;
+    return robot.print(strm);
 }
 
 Robot::Robot(string name): _position(Position(0,0)) {

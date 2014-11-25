@@ -23,7 +23,7 @@ public:
             os << "\t\tObject: ";
             if (getObject()) os << *getObject() ;
             else os << "null";
-        os << "\t]";
+        os << "\n\t]";
         return os;
     }
 

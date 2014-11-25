@@ -9,8 +9,8 @@ set(SOURCE_FILES
     VideState.cpp
     VideFacePlotState.cpp
     Robot.cpp
-    EnChargeFacePlotState.cpp
-    EnChargeState.cpp
+    ChargeFacePlotState.cpp
+    ChargeState.cpp
     FigeState.cpp
     Object.cpp
     Position.cpp

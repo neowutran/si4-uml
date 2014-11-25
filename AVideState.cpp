@@ -5,18 +5,18 @@
 #include "FigeState.h"
 using namespace std;
 
-shared_ptr<State> Vide_state::rencontrerPlot(shared_ptr<Plot> p) {
-    return Vide_face_plot_state::get_instance();
+shared_ptr<State> VideState::rencontrerPlot(shared_ptr<Plot> p) {
+    return VideFacePlotState::get_instance();
 }
 
-shared_ptr<State> Vide_state::avancer(int x, int y) {
-    return Vide_state::get_instance();
+shared_ptr<State> VideState::avancer(int x, int y) {
+    return VideState::get_instance();
 }
 
-shared_ptr<State> Vide_state::tourner(string direction) {
+shared_ptr<State> VideState::tourner(string direction) {
 
-    return Vide_state::get_instance();
+    return VideState::get_instance();
 }
-shared_ptr<State> Vide_state::figer() {
-    return make_shared<Fige_state>(Fige_state(Vide_state::get_instance()));
+shared_ptr<State> VideState::figer() {
+    return make_shared<FigeState>(FigeState(VideState::get_instance()));
 }

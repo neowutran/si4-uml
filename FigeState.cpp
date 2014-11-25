@@ -2,10 +2,10 @@
 #include "FigeState.h"
 using namespace std;
 
-Fige_state::Fige_state(shared_ptr<State> currentState) {
+FigeState::FigeState(shared_ptr<State> currentState) {
     _previousState = currentState;
 }
 
-shared_ptr<State> Fige_state::repartir() {
+shared_ptr<State> FigeState::repartir() {
     return _previousState;
 }

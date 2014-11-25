@@ -11,7 +11,7 @@
 using namespace std;
 
 class IObserver;
-class Vide_state;
+class VideState;
 
 class State {
 

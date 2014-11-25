@@ -5,17 +5,17 @@
 #include "FigeState.h"
 using namespace std;
 
-shared_ptr<State> Charge_face_plot_state::poser() {
-    return Vide_face_plot_state::get_instance();
+shared_ptr<State> ChargeFacePlotState::poser() {
+    return VideFacePlotState::get_instance();
 }
 
-shared_ptr<State> Charge_face_plot_state::peser() {
-    return Charge_face_plot_state::get_instance();
+shared_ptr<State> ChargeFacePlotState::peser() {
+    return ChargeFacePlotState::get_instance();
 }
 
-shared_ptr<State> Charge_face_plot_state::tourner(string direction) {
-    return Charge_state::get_instance();
+shared_ptr<State> ChargeFacePlotState::tourner(string direction) {
+    return ChargeState::get_instance();
 }
-shared_ptr<State> Charge_face_plot_state::figer() {
-    return make_shared<Fige_state>(Fige_state(Charge_face_plot_state::get_instance()));
+shared_ptr<State> ChargeFacePlotState::figer() {
+    return make_shared<FigeState>(FigeState(ChargeFacePlotState::get_instance()));
 }

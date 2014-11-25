@@ -6,19 +6,19 @@
 
 #include "Robot.h"
 
-class Charge_face_plot_state : public State {
+class ChargeFacePlotState : public State {
 private:
 
-    Charge_face_plot_state() {
+    ChargeFacePlotState() {
     }
-    Charge_face_plot_state(Charge_face_plot_state const&) = delete;
-    void operator=(Charge_face_plot_state const &) = delete;
+    ChargeFacePlotState(ChargeFacePlotState const&) = delete;
+    void operator=(ChargeFacePlotState const &) = delete;
 public:
     shared_ptr<State> figer();
 
 
-    static shared_ptr<Charge_face_plot_state> get_instance() {
-        static shared_ptr<Charge_face_plot_state> _instance(new Charge_face_plot_state());
+    static shared_ptr<ChargeFacePlotState> get_instance() {
+        static shared_ptr<ChargeFacePlotState> _instance(new ChargeFacePlotState());
         return _instance;
     }
 

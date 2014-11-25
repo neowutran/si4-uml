@@ -7,14 +7,14 @@
 #include <iostream>
 #include "Robot.h"
 
-class Fige_state : public State {
+class FigeState : public State {
 private:
-    Fige_state() {
+    FigeState() {
     }
     shared_ptr<State> _previousState;
 
 public:
-    Fige_state(shared_ptr<State> currentState);
+    FigeState(shared_ptr<State> currentState);
     shared_ptr<State> repartir();
 
     string get_name() const {

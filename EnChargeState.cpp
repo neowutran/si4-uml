@@ -4,21 +4,21 @@
 #include "FigeState.h"
 using namespace std;
 
-shared_ptr<State> Charge_state::avancer(int x, int y) {
-    return Charge_state::get_instance();
+shared_ptr<State> ChargeState::avancer(int x, int y) {
+    return ChargeState::get_instance();
 }
 
-shared_ptr<State> Charge_state::peser() {
-    return Charge_state::get_instance();
+shared_ptr<State> ChargeState::peser() {
+    return ChargeState::get_instance();
 }
 
-shared_ptr<State> Charge_state::rencontrerPlot(shared_ptr<Plot> p) {
-    return Charge_face_plot_state::get_instance();
+shared_ptr<State> ChargeState::rencontrerPlot(shared_ptr<Plot> p) {
+    return ChargeFacePlotState::get_instance();
 }
 
-shared_ptr<State> Charge_state::tourner(string direction) {
-    return Charge_state::get_instance();
+shared_ptr<State> ChargeState::tourner(string direction) {
+    return ChargeState::get_instance();
 }
-shared_ptr<State> Charge_state::figer() { 
-    return make_shared<Fige_state>(Fige_state(Charge_state::get_instance()));
+shared_ptr<State> ChargeState::figer() {
+    return make_shared<FigeState>(FigeState(ChargeState::get_instance()));
 }

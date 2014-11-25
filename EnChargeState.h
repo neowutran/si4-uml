@@ -5,19 +5,19 @@
 #include <memory>
 #include "Robot.h"
 
-class Charge_state : public State {
+class ChargeState : public State {
 private:
 
-    Charge_state() {
+    ChargeState() {
     }
-    Charge_state(Charge_state const&) = delete;
-    void operator=(Charge_state const &) = delete;
+    ChargeState(ChargeState const&) = delete;
+    void operator=(ChargeState const &) = delete;
 public:
     shared_ptr<State> figer();
 
 
-    static shared_ptr<Charge_state> get_instance() {
-        static shared_ptr<Charge_state> _instance(new Charge_state());
+    static shared_ptr<ChargeState> get_instance() {
+        static shared_ptr<ChargeState> _instance(new ChargeState());
         return _instance;
     }
 

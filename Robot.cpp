@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
 
 Robot::Robot(string name): _position(Position(0,0)) {
     _name = name;
-    _state = State::getInitialState();//Vide_state::get_instance();
+    _state = State::getInitialState();//VideState::get_instance();
     _direction = "N";
 }
 

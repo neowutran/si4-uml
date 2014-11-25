@@ -9,16 +9,16 @@
 
 using namespace std;
 
-class Vide_state : public State {
+class VideState : public State {
 private:
-    Vide_state() {};
+    VideState() {};
 
 public:
     shared_ptr<State> figer();
 
 
-    static shared_ptr<Vide_state> get_instance() {
-        static shared_ptr<Vide_state> _instance(new Vide_state());
+    static shared_ptr<VideState> get_instance() {
+        static shared_ptr<VideState> _instance(new VideState());
         return _instance;
     }
     shared_ptr<State> rencontrerPlot(shared_ptr<Plot> p) override;

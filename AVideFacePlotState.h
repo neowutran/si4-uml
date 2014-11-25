@@ -5,16 +5,16 @@
 #include <memory>
 #include "Robot.h"
 
-class Vide_face_plot_state : public State {
+class VideFacePlotState : public State {
 
 private:
-    Vide_face_plot_state() { }
-    Vide_face_plot_state(Vide_face_plot_state const&) = delete;
-    void operator=(Vide_face_plot_state const &) = delete;
+    VideFacePlotState() { }
+    VideFacePlotState(VideFacePlotState const&) = delete;
+    void operator=(VideFacePlotState const &) = delete;
 
 public:
-    static shared_ptr<Vide_face_plot_state> get_instance() {
-        static shared_ptr<Vide_face_plot_state> _instance(new Vide_face_plot_state());
+    static shared_ptr<VideFacePlotState> get_instance() {
+        static shared_ptr<VideFacePlotState> _instance(new VideFacePlotState());
         return _instance;
     }
 

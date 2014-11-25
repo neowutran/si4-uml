@@ -39,5 +39,5 @@ shared_ptr<State> State::peser() {
 }
 
 shared_ptr<State> State::getInitialState() {
-    return Vide_state::get_instance();
+    return VideState::get_instance();
 }

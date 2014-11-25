@@ -1,5 +1,5 @@
-#ifndef _IOBSERVABLE_H
-#define _IOBSERVABLE_H
+#ifndef _IOBSERVER_H
+#define _IOBSERVER_H
 #include <vector>
 #include <string>
 #include <algorithm>

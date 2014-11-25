@@ -8,7 +8,7 @@
 
 ostream& Robot::print(ostream& os) const {
     os << "Robot " << getNom() << " [" << endl;
-    os << "\tState: " << state() << endl;
+    os << "\tState: " << *state() << endl;
     os << "\tPosition: " << position() << endl;
     os << "\tDirection: " << direction() << endl;
 
@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
 
 Robot::Robot(string name): _position(Position(0,0)) {
     _name = name;
-    _state = State::getInitialState();//VideState::get_instance();
+    _state = State::getInitialState().get();//VideState::get_instance();
     _direction = "N";
 }
 
@@ -52,12 +52,12 @@ Position Robot::position() const {
     return _position;
 }
 
-shared_ptr<State> Robot::state() const {
+State* Robot::state() const {
     return _state;
 }
 
 void Robot::avancer(int x, int y) {
-    _state = _state->avancer(x, y);
+    _state = _state->avancer(x, y).get();
     _position.setx(x);
     _position.sety(y);
 
@@ -69,7 +69,7 @@ void Robot::avancer(int x, int y) {
 
 void Robot::tourner(string direction) {
     _direction = direction;
-    _state = _state->tourner(direction);
+    _state = _state->tourner(direction).get();
 
     stringstream message;
     message << "tourner(" << direction << ")";
@@ -79,7 +79,7 @@ void Robot::tourner(string direction) {
 
 void Robot::saisir(shared_ptr<Object> o) {
     _object = o;
-    _state = _state->saisir(o);
+    _state = _state->saisir(o).get();
 
     stringstream message;
     message << "saisir(" << *o << ")";
@@ -89,18 +89,18 @@ void Robot::saisir(shared_ptr<Object> o) {
 void Robot::poser() {
     _plotEnFace->setObject(_object);
     _object = nullptr;
-    _state = _state->poser();
+    _state = _state->poser().get();
     NotifyAll("poser()");
 }
 
 int Robot::peser() {
-    _state = _state->peser();
+    _state = _state->peser().get();
     NotifyAll("peser()");
     return _object->getPoids();
 }
 
 void Robot::rencontrerPlot(shared_ptr<Plot> p) {
-    _state = _state->rencontrerPlot(p);
+    _state = _state->rencontrerPlot(p).get();
     _plotEnFace = p;
 
     stringstream message;
@@ -109,7 +109,7 @@ void Robot::rencontrerPlot(shared_ptr<Plot> p) {
 }
 
 int Robot::evaluerPlot() {
-    _state = _state->evaluerPlot();
+    _state = _state->evaluerPlot().get();
     NotifyAll("evaluerPlot()");
     return _plotEnFace->getHauteur();
 }
@@ -121,6 +121,7 @@ void Robot::figer() {
 
 void Robot::repartir() {
     _state = _state->repartir();
+
     stringstream message;
     message << "repartir(" << _state->get_name() << ")";
     NotifyAll(message.str());

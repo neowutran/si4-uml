@@ -11,6 +11,7 @@ int main() {
     r.Attach(&aff);
 
     r.setAfficher();    // activation de l'affichage automatique
+    cout << "Affichage initial: ";
     r.afficher();       // affichage initial
 
     shared_ptr<Object> o1 = make_shared<Object>(Object(10));
@@ -18,6 +19,8 @@ int main() {
 
     shared_ptr<Plot> p2 = make_shared<Plot>(Plot(10));
 
+    r.figer();
+    r.repartir();
     r.avancer(10, 5);
     r.tourner("E");
     r.rencontrerPlot(p1);
@@ -25,19 +28,15 @@ int main() {
     r.repartir();
     cout << "Plot évalué à: " << r.evaluerPlot() << endl;
     r.saisir(p1->getObject());
-    r.peser();
+    cout << "Poids objet : " << r.peser() << endl;
+    r.tourner("S");
     r.figer();
     r.repartir();
-    r.tourner("S");
     r.avancer(5, 10);
     r.tourner("E");
     r.peser();
     r.rencontrerPlot(p2);
     r.poser();
 
-    /*int a = 1;
-      int* b = &a;
-
-      printf("%d @ %x", a, b);*/
     cout << "==== THE END ====" << endl;
 }

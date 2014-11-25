@@ -4,18 +4,16 @@
 #include <iostream>
 #include <memory>
 #include "Robot.h"
+#include "EnRouteState.h"
 
-class ChargeState : public State {
+class ChargeState : public EnRouteState {
 private:
 
-    ChargeState() {
-    }
+    ChargeState() {}
     ChargeState(ChargeState const&) = delete;
     void operator=(ChargeState const &) = delete;
+
 public:
-    shared_ptr<State> figer();
-
-
     static shared_ptr<ChargeState> get_instance() {
         static shared_ptr<ChargeState> _instance(new ChargeState());
         return _instance;
@@ -28,7 +26,6 @@ public:
     virtual shared_ptr<State> rencontrerPlot(shared_ptr<Plot> p);
     virtual shared_ptr<State> peser();
     virtual shared_ptr<State> tourner(string direction);
-
 
 };
 #endif

@@ -10,11 +10,11 @@ shared_ptr<State> State::tourner(string direction) {
     throw State::InvalidActionException();
 }
 
-shared_ptr<State> State::figer() {
+State* State::figer() {
     throw State::InvalidActionException();
 }
 
-shared_ptr<State> State::repartir() {
+State* State::repartir() {
     throw State::InvalidActionException();
 }
 

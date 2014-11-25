@@ -11,6 +11,7 @@ set(SOURCE_FILES
     Robot.cpp
     ChargeFacePlotState.cpp
     ChargeState.cpp
+    EnRouteState.cpp
     FigeState.cpp
     Object.cpp
     Position.cpp

@@ -17,7 +17,7 @@ class State;
 
 class Robot : public IObservable {
 private:
-    shared_ptr<State> _state = nullptr;
+    State* _state = 0;
     string _direction;
     shared_ptr<Plot> _plotEnFace = nullptr;
     shared_ptr<Object> _object = nullptr;
@@ -29,7 +29,7 @@ public:
     string direction() const;
     shared_ptr<Object> object() const;
     Position position() const;
-    shared_ptr<State> state() const;
+    State* state() const;
     shared_ptr<Plot> plot() const;
 
 

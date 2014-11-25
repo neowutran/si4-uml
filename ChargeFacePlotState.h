@@ -5,18 +5,15 @@
 #include <memory>
 
 #include "Robot.h"
+#include "EnRouteState.h"
 
-class ChargeFacePlotState : public State {
+class ChargeFacePlotState : public EnRouteState {
 private:
-
-    ChargeFacePlotState() {
-    }
+    ChargeFacePlotState() { }
     ChargeFacePlotState(ChargeFacePlotState const&) = delete;
     void operator=(ChargeFacePlotState const &) = delete;
+
 public:
-    shared_ptr<State> figer();
-
-
     static shared_ptr<ChargeFacePlotState> get_instance() {
         static shared_ptr<ChargeFacePlotState> _instance(new ChargeFacePlotState());
         return _instance;

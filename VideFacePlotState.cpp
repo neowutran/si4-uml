@@ -2,7 +2,7 @@
 #include "VideFacePlotState.h"
 #include "ChargeFacePlotState.h"
 #include "VideState.h"
-#include "FigeState.h"
+
 using namespace std;
 
 shared_ptr<State> VideFacePlotState::evaluerPlot() {
@@ -17,6 +17,3 @@ shared_ptr<State> VideFacePlotState::tourner(string direction) {
     return VideState::get_instance();
 }
 
-shared_ptr<State> VideFacePlotState::figer() {
-    return FigeState::get_instance(VideFacePlotState::get_instance());
-}

@@ -6,17 +6,15 @@
 
 #include "State.h"
 #include "Plot.h"
+#include "EnRouteState.h"
 
 using namespace std;
 
-class VideState : public State {
+class VideState : public EnRouteState {
 private:
     VideState() {};
 
 public:
-    shared_ptr<State> figer();
-
-
     static shared_ptr<VideState> get_instance() {
         static shared_ptr<VideState> _instance(new VideState());
         return _instance;

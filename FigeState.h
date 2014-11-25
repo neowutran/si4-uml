@@ -9,20 +9,20 @@
 
 class FigeState : public State {
 private:
-    FigeState() {
-    }
-    shared_ptr<State> _previousState;
+    FigeState() { }
+    FigeState(State* currentState);
+    State* _previousState;
     FigeState(FigeState const&) = delete;
     void operator=(FigeState const &) = delete;
-    FigeState(shared_ptr<State> currentState);
-public:
 
-    static shared_ptr<FigeState> get_instance(shared_ptr<State> currentState) {
-        shared_ptr<FigeState> _instance(new FigeState(currentState));
-        return _instance;
+public:
+    ~FigeState() = default;
+
+    static FigeState* get_instance(State* currentState) {
+        return new FigeState(currentState);
     }
     
-    shared_ptr<State> repartir();
+    State* repartir();
 
     string get_name() const {
         return "Fige";

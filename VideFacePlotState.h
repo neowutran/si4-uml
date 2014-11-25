@@ -4,8 +4,9 @@
 #include <iostream>
 #include <memory>
 #include "Robot.h"
+#include "EnRouteState.h"
 
-class VideFacePlotState : public State {
+class VideFacePlotState : public EnRouteState {
 
 private:
     VideFacePlotState() { }
@@ -25,7 +26,6 @@ public:
     virtual shared_ptr<State> evaluerPlot();
     virtual shared_ptr<State> saisir(shared_ptr<Object> o);
     virtual shared_ptr<State> tourner(string direction);
-    virtual shared_ptr<State> figer();
 };
 
 #endif

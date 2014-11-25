@@ -27,7 +27,7 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& strm, const Object& object) {
-        return object.printInline(strm) << endl;
+        return object.printInline(strm);
     }
 };
 #endif

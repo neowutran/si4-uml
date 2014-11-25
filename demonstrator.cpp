@@ -17,8 +17,9 @@ int main() {
     shared_ptr<Plot> p1 = make_shared<Plot>(Plot(15, o1));
 
     shared_ptr<Plot> p2 = make_shared<Plot>(Plot(10));
+
     r.avancer(10, 5);
-    r.tourner("N");
+    r.tourner("E");
     r.rencontrerPlot(p1);
     r.figer();
     r.repartir();

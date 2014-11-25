@@ -6,12 +6,13 @@
 
 #include "State.h"
 #include "Plot.h"
+
 using namespace std;
+
 class Vide_state : public State {
 private:
+    Vide_state() {};
 
-    Vide_state() {
-    }
 public:
     shared_ptr<State> figer();
 

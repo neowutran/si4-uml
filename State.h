@@ -14,7 +14,6 @@ class IObserver;
 class Vide_state;
 
 class State {
-    //vector<IObserver*> list;
 
 protected:
     State() {}
@@ -31,15 +30,10 @@ public:
     virtual shared_ptr<State> saisir(shared_ptr<Object> o);
     virtual shared_ptr<State> poser();
     virtual shared_ptr<State> peser();
-/*
-    static shared_ptr<State> first_state(){
 
-         return dynamic_pointer_cast<State>(Vide_state::get_instance());
+    static shared_ptr<State> getInitialState();
 
-    }
-*/
     virtual string get_name() const {
-
         return "State";
     }
 

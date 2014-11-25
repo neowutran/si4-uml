@@ -9,7 +9,7 @@
 ostream& Robot::print(ostream& os) const {
     os << "Robot " << getNom() << " [" << endl;
     os << "\tState: " << state() << endl;
-    os << "\tPosition: " << position().getx() << "," << position().gety() << endl;
+    os << "\tPosition: " << position() << endl;
     os << "\tDirection: " << direction() << endl;
 
     os << "\tPlot: " ;
@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
 
 Robot::Robot(string name): _position(Position(0,0)) {
     _name = name;
-    _state = Vide_state::get_instance();
+    _state = State::getInitialState();//Vide_state::get_instance();
     _direction = "N";
 }
 
@@ -80,7 +80,10 @@ void Robot::tourner(string direction) {
 void Robot::saisir(shared_ptr<Object> o) {
     _object = o;
     _state = _state->saisir(o);
-    NotifyAll("saisir(TODO)");
+
+    stringstream message;
+    message << "saisir(" << *o << ")";
+    NotifyAll(message.str());
 }
 
 void Robot::poser() {
@@ -101,7 +104,7 @@ void Robot::rencontrerPlot(shared_ptr<Plot> p) {
     _plotEnFace = p;
 
     stringstream message;
-    message << "rencontrerPlot(" << p << ")";
+    message << "rencontrerPlot(" << *p << ")";
     NotifyAll(message.str());
 }
 
@@ -118,7 +121,9 @@ void Robot::figer() {
 
 void Robot::repartir() {
     _state = _state->repartir();
-    NotifyAll("repartir()");
+    stringstream message;
+    message << "repartir(" << _state->get_name() << ")";
+    NotifyAll(message.str());
 }
 
 void Robot::setAfficher() {

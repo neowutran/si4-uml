@@ -1,4 +1,5 @@
 #include "State.h"
+#include "AVideState.h"
 #include <algorithm>
 class IObserver;
 
@@ -42,4 +43,8 @@ shared_ptr<State> State::poser() {
 
 shared_ptr<State> State::peser() {
     throw State::InvalidActionException();
+}
+
+shared_ptr<State> State::getInitialState() {
+    return Vide_state::get_instance();
 }

@@ -1,4 +1,5 @@
 #include "Position.h"
+#include <iostream>
 
 using namespace std;
 
@@ -23,6 +24,10 @@ void Position::sety(int y){
     _y = y;
 }
 
-string Position::toString() const {
-    return "("+to_string(getx())+", "+to_string(gety())+")";
+ostream& Position::print(ostream& os) const {
+    return os << "(" << getx() << ", " << gety() << ")";
+}
+
+std::ostream& operator<<(std::ostream &os, const Position& p) {
+    return p.print(os);
 }

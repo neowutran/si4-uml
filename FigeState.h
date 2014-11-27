@@ -16,7 +16,7 @@ private:
     void operator=(FigeState const &) = delete;
 
 public:
-    ~FigeState() = default;
+    virtual ~FigeState() = default;
 
     static FigeState* get_instance(State* currentState) {
         return new FigeState(currentState);

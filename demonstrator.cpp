@@ -1,10 +1,17 @@
 #include "Robot.h"
 #include "AfficheurRobot.h"
+#include "CommandeRobot.h"
 
 using namespace std;
 
 int main() {
 
+    CommandeRobot::registeredCommands();
+
+    CommandeRobot* c = CommandeRobot::newCommandeRobot("AVANCER");
+    cout << *c << endl;
+
+    return 0;
     AfficheurRobot aff = AfficheurRobot();
     Robot r = Robot("Robot1");
 

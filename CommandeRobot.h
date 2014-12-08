@@ -9,12 +9,9 @@ using namespace std;
 class CommandeRobot {
 private:
     string _name;
+    Invocator _invocator;
 
 public:
-    CommandeRobot() {
-
-    }
-
     CommandeRobot(string name) {
         _name = name;
         registeredCommands()[name] = this;
@@ -43,23 +40,15 @@ public:
 
 };
 
-class CommandeAvancer : public CommandeRobot {
-private:
-    static CommandeAvancer instance;
+class Invocator {
+
 public:
-    CommandeAvancer() {
-    }
+    Invocator() { }
 
-    using CommandeRobot::CommandeRobot;
+    int getInt() {
 
-    CommandeRobot* virtualConstructor() {
-        return new CommandeAvancer();
     }
-    void execute(vector<string> parameters) {}
 };
-
-CommandeAvancer CommandeAvancer::instance("AVANCER");
-//CommandeAvancer Comm = CommandeAvancer("lol");
 
 
 

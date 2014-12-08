@@ -7,6 +7,7 @@ class CommandeAvancer : public CommandeRobot {
 
 private:
     static CommandeAvancer instance;
+    int x, y;
 public:
     CommandeAvancer(Invocator& invocator) {
         _invocator = invocator;
@@ -14,13 +15,19 @@ public:
 
     using CommandeRobot::CommandeRobot;
 
-    CommandeRobot* virtualConstructor() {
-        return new CommandeAvancer();
+    CommandeRobot* virtualConstructor(Invocator& invocator) {
+        cout << "AVANCER CREATED!!! :d" << endl;
+        int x = invocator.getInt(),
+            y = invocator.getInt();
+        return new CommandeAvancer(x, y);
     }
-    void execute(vector<string> parameters) {}
+
+    void execute() {}
+
 };
 
 CommandeAvancer CommandeAvancer::instance("AVANCER");
+//CommandeAvancer::instance = new CommandeAvancer("AVANCER");
 
 
 //CommandeAvancer Comm = CommandeAvancer("lol");

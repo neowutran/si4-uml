@@ -1,15 +1,21 @@
 #include "Robot.h"
 #include "AfficheurRobot.h"
 #include "CommandeRobot.h"
+#include "CommandeAvancer.h"
+#include "Invocator.h"
 
 using namespace std;
 
 int main() {
 
-    CommandeRobot::registeredCommands();
+    cout << CommandeRobot::registeredCommands()["AVANCER"] << endl;
 
-    CommandeRobot* c = CommandeRobot::newCommandeRobot("AVANCER");
-    cout << *c << endl;
+    Invocator i = Invocator();
+    i.read();
+
+    /*CommandeRobot* c = CommandeRobot::newCommandeRobot("AVANCER");
+    cout << *c << endl;*/
+    return 0;
 
     return 0;
     AfficheurRobot aff = AfficheurRobot();

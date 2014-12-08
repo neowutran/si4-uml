@@ -4,42 +4,35 @@
 #include <map>
 #include <string>
 #include <vector>
+
 using namespace std;
 
-class Invocator {
-
-    public:
-        Invocator() { }
-
-        int getInt() {
-            return 0;
-        }
-};
-
-
+class Invocator;
 
 class CommandeRobot {
     private:
         string _name;
-        Invocator _invocator;
 
     public:
         CommandeRobot(string name) {
+            cout << "REGISTERING " << name << endl;
             _name = name;
             registeredCommands()[name] = this;
         };
 
-        static CommandeRobot* newCommandeRobot(string type) {
-            return registeredCommands()[type]->virtualConstructor();
+        static CommandeRobot* newCommandeRobot(string type, const Invocator& invocator) {
+            return registeredCommands()[type]->virtualConstructor(invocator);
         };
 
-        virtual CommandeRobot* virtualConstructor() = 0;
+        virtual CommandeRobot* virtualConstructor(const Invocator& invocator) = 0;
+        virtual vector<string> getParamsTypes() = 0;
+        virtual void setParams(vector<void*> params) = 0;
 
         string getName() {
             return _name;
         }
 
-        void execute(vector<string> parameters) {}
+        void execute() {}
 
         static map<string, CommandeRobot*>& registeredCommands() {
             static map<string, CommandeRobot*>* _map = new map<string, CommandeRobot*>;

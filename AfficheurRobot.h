@@ -6,13 +6,14 @@
 class AfficheurRobot : public IObserver {
 
 public :
-    AfficheurRobot() {};
+    AfficheurRobot() {
+    };
 
-    void Update(IObservable* observable, string message) {
-        Robot* r = static_cast<Robot*>(observable);
+    void Update(IObservable *observable, string message) {
+        Robot *r = static_cast<Robot *>(observable);
 
         if (r->getAfficher()) {
-            cout << "\n========================" << endl ;
+            cout << "\n========================" << endl;
             cout << r->getNom() << " vient d'effectuer l'action: " << message << endl;
             cout << "\n";
             cout << "Etat après action: ";

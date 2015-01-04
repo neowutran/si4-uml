@@ -1,5 +1,6 @@
 #ifndef _CHARGE_STATE_H
 #define _CHARGE_STATE_H
+
 #include <string>
 #include <iostream>
 #include <memory>
@@ -9,8 +10,11 @@
 class ChargeState : public EnRouteState {
 private:
 
-    ChargeState() {}
-    ChargeState(ChargeState const&) = delete;
+    ChargeState() {
+    }
+
+    ChargeState(ChargeState const &) = delete;
+
     void operator=(ChargeState const &) = delete;
 
 public:
@@ -22,10 +26,15 @@ public:
     string get_name() const {
         return "Charge";
     }
+
     virtual shared_ptr<State> avancer(int x, int y);
+
     virtual shared_ptr<State> rencontrerPlot(shared_ptr<Plot> p);
+
     virtual shared_ptr<State> peser();
+
     virtual shared_ptr<State> tourner(string direction);
 
 };
+
 #endif

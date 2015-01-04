@@ -1,18 +1,14 @@
 #include <iostream>
-#include <string>
 #include "Robot.h"
-#include "FigeState.h"
-#include "VideState.h"
-#include <algorithm>
 #include <sstream>
 
-ostream& Robot::print(ostream& os) const {
+ostream &Robot::print(ostream &os) const {
     os << "Robot " << getNom() << " [" << endl;
     os << "\tState: " << *state() << endl;
     os << "\tPosition: " << position() << endl;
     os << "\tDirection: " << direction() << endl;
 
-    os << "\tPlot: " ;
+    os << "\tPlot: ";
     if (plot()) os << *plot();
     else os << "null";
     os << endl;
@@ -26,11 +22,11 @@ ostream& Robot::print(ostream& os) const {
     return os;
 }
 
-std::ostream& operator<<(std::ostream &strm, const Robot& robot) {
+std::ostream &operator<<(std::ostream &strm, const Robot &robot) {
     return robot.print(strm);
 }
 
-Robot::Robot(string name): _position(Position(0,0)) {
+Robot::Robot(string name) : _position(Position(0, 0)) {
     _name = name;
     _state = State::getInitialState().get();//VideState::get_instance();
     _direction = "N";
@@ -52,7 +48,7 @@ Position Robot::position() const {
     return _position;
 }
 
-State* Robot::state() const {
+State *Robot::state() const {
     return _state;
 }
 
@@ -69,6 +65,7 @@ void Robot::avancer(int x, int y) {
 
 void Robot::tourner(string direction) {
     _direction = direction;
+    _plotEnFace = nullptr;
     _state = _state->tourner(direction).get();
 
     stringstream message;

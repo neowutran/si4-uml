@@ -5,7 +5,7 @@
 
 class EnRouteState : public State {
 public:
-    State* figer();
+    State *figer();
 };
 
 #endif

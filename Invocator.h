@@ -5,28 +5,84 @@
 
 class Invocator {
 
+private:
+    Robot &_robot;
+    vector<CommandeRobot*> _macro;
 public:
-    Invocator() { }
 
-    void read() {
-        string command;
-        cin >> command;
-
-        cout << "Command read : " << command << endl;
-        CommandeRobot* c = CommandeRobot::newCommandeRobot(command, *this);
-
-        cout << "COMMAND = " << *c << endl;
+    vector<CommandeRobot*> macro(){
+        vector<CommandeRobot*> newVector = _macro;
+        _macro.clear();
+        return newVector;
+    }
+    void clear_macro(){
     }
 
-    int getInt() {
+    Invocator(Robot &r) : _robot(r) {
+    }
+
+    bool read() {
+        string command;
+        cout << "Entrez une commande" << endl;
+        cin >> command;
+        if (command == "exit") {
+            return false;
+        }
+        try {
+            CommandeRobot *c = CommandeRobot::newCommandeRobot(command, *this);
+            if (c == nullptr) {
+                cout << "Cette commande n'existe pas" << endl;
+                return true;
+            }
+            c->execute(_robot);
+        } catch (...) {
+            cout << "something bad append";
+        }
+        return true;
+
+    }
+
+    bool readMacro(){
+        string command;
+        cout << "Entrez une commande" << endl;
+        cin >> command;
+        if (command == "FINMACRO") {
+            return false;
+        }
+        try {
+            CommandeRobot *c = CommandeRobot::newCommandeRobot(command, *this);
+            if (c == nullptr) {
+                cout << "Cette commande n'existe pas" << endl;
+                return true;
+            }
+
+            _macro.push_back(c);
+
+        } catch (...) {
+            cout << "something bad append";
+        }
+        return true;
+
+    }
+
+    int getInt() const {
         int input;
         cin >> input;
         return input;
     }
-    string getString() {
+
+    string getString() const {
         string input;
         cin >> input;
         return input;
+    }
+
+    void infiniteRead() {
+        bool b;
+        do {
+            b = read();
+        } while (b);
+
     }
 };
 

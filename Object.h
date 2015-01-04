@@ -14,20 +14,22 @@ private:
 
 public:
     int getPoids() const;
+
     Object(int poids);
 
-    ostream& printInline(ostream& os) const {
+    ostream &printInline(ostream &os) const {
         return os << "Object[Poids:" << getPoids() << "]";
     }
 
-    ostream& print(ostream& os) const {
+    ostream &print(ostream &os) const {
         return os << "Object[" << endl
                 << "\tPoids:" << getPoids() << endl
                 << "]";
     }
 
-    friend std::ostream& operator<<(std::ostream& strm, const Object& object) {
+    friend std::ostream &operator<<(std::ostream &strm, const Object &object) {
         return object.printInline(strm);
     }
 };
+
 #endif

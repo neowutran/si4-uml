@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 #include "VideState.h"
 #include "VideFacePlotState.h"
 

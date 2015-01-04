@@ -9,20 +9,25 @@
 
 class FigeState : public State {
 private:
-    FigeState() { }
-    FigeState(State* currentState);
-    State* _previousState;
-    FigeState(FigeState const&) = delete;
+    FigeState() {
+    }
+
+    FigeState(State *currentState);
+
+    State *_previousState;
+
+    FigeState(FigeState const &) = delete;
+
     void operator=(FigeState const &) = delete;
 
 public:
     virtual ~FigeState() = default;
 
-    static FigeState* get_instance(State* currentState) {
+    static FigeState *get_instance(State *currentState) {
         return new FigeState(currentState);
     }
-    
-    State* repartir();
+
+    State *repartir();
 
     string get_name() const {
         return "Fige";

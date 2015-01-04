@@ -10,38 +10,43 @@ using namespace std;
 class Invocator;
 
 class CommandeRobot {
-    private:
-        string _name;
+private:
+    string _name;
+protected:
+    CommandeRobot() {
+    }
 
-    public:
-        CommandeRobot(string name) {
-            cout << "REGISTERING " << name << endl;
-            _name = name;
-            registeredCommands()[name] = this;
-        };
+public:
+    CommandeRobot(string name) {
+        cout << "REGISTERING " << name << endl;
+        _name = name;
+        registeredCommands()[name] = this;
+    }
 
-        static CommandeRobot* newCommandeRobot(string type, const Invocator& invocator) {
-            return registeredCommands()[type]->virtualConstructor(invocator);
-        };
-
-        virtual CommandeRobot* virtualConstructor(const Invocator& invocator) = 0;
-        virtual vector<string> getParamsTypes() = 0;
-        virtual void setParams(vector<void*> params) = 0;
-
-        string getName() {
-            return _name;
+    static CommandeRobot *newCommandeRobot(string type, Invocator &invocator) {
+        if (registeredCommands().find(type) == registeredCommands().end()) {
+            return nullptr;
         }
 
-        void execute() {}
+        return registeredCommands()[type]->virtualConstructor(invocator);
+    }
 
-        static map<string, CommandeRobot*>& registeredCommands() {
-            static map<string, CommandeRobot*>* _map = new map<string, CommandeRobot*>;
-            return *_map;
-        }
+    virtual CommandeRobot *virtualConstructor(Invocator &invocator) = 0;
 
-        friend ostream& operator<<(ostream& os, CommandeRobot& c) {
-            return os << c.getName();
-        }
+    string getName() {
+        return _name;
+    }
+
+    virtual void execute(Robot &r) = 0;
+
+    static map<string, CommandeRobot *> &registeredCommands() {
+        static map<string, CommandeRobot *> *_map = new map<string, CommandeRobot *>;
+        return *_map;
+    }
+
+    friend ostream &operator<<(ostream &os, CommandeRobot &c) {
+        return os << c.getName();
+    }
 
 };
 

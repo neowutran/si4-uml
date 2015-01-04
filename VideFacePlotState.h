@@ -1,5 +1,6 @@
 #ifndef _VIDE_FACE_PLOT_STATE_H
 #define _VIDE_FACE_PLOT_STATE_H
+
 #include <string>
 #include <iostream>
 #include <memory>
@@ -9,8 +10,11 @@
 class VideFacePlotState : public EnRouteState {
 
 private:
-    VideFacePlotState() { }
-    VideFacePlotState(VideFacePlotState const&) = delete;
+    VideFacePlotState() {
+    }
+
+    VideFacePlotState(VideFacePlotState const &) = delete;
+
     void operator=(VideFacePlotState const &) = delete;
 
 public:
@@ -24,7 +28,9 @@ public:
     }
 
     virtual shared_ptr<State> evaluerPlot();
+
     virtual shared_ptr<State> saisir(shared_ptr<Object> o);
+
     virtual shared_ptr<State> tourner(string direction);
 };
 

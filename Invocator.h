@@ -44,9 +44,10 @@ public:
 
     bool readMacro(){
         string command;
-        cout << "Entrez une commande" << endl;
+        cout << "Entrez une commande pour votre macro" << endl;
         cin >> command;
         if (command == "FINMACRO") {
+            cout << "Fin d'enregistrement de la macro" << endl;
             return false;
         }
         try {
